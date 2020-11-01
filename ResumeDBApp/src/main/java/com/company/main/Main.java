@@ -25,9 +25,9 @@ public class Main {
     
     public static void main(String[] args) throws Exception {
         UserDaoInter userdao = new UserDaoImpl();
-        User u = userdao.getById(2);
-        u.setName("Cabir");
-        userdao.updateUser(u);
+        
+        User u = new User(0,"Cabir", "Amirkhanli","+994552475728","cabir1993@bk.ru");
+        userdao.addUser(u);
         
         
         List<User> list = userdao.getAll();
