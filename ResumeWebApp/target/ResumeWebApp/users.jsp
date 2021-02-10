@@ -23,7 +23,7 @@
             String surname = request.getParameter("surname");
             String nationalityIdStr = request.getParameter("nid");
             Integer nationalityId = null;
-            if (nationalityIdStr != null)
+            if (nationalityIdStr != null && !nationalityIdStr.trim().isEmpty())
             {
                 nationalityId = Integer.parseInt(nationalityIdStr);
             }
@@ -34,9 +34,9 @@
 
 
         <div>
-            <form action="users.jsp" method="POST">
-                <input type="hidden" name="id" value=""/>
-                <br/>
+            <form action="users.jsp" method="GET">
+<%--                <input type="hidden" name="id" value=""/>--%>
+<%--                <br/>--%>
                 <label>name</label>
                 <input type="text" name="name" value=""/>
                 <br/>
