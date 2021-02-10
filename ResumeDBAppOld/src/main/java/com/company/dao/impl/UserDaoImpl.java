@@ -67,26 +67,26 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
                 + " left join country n on u.nationality_id = n.id "
                 + " left join country c on u.birthplace_id = c.id where 1 = 1 ";
         
-            if (name!=null) {
-                sql += "and name=?";
+            if (name!=null && !name.trim().isEmpty()) {
+                sql += " and u.name = ? ";
             }
             
-            if (surname!=null) {
-                sql += "and surname=?";
+            if (surname!=null && !surname.trim().isEmpty()) {
+                sql += " and surname = ? ";
             }
             
             if (nationalityId!=null) {
-                sql += "and nationality_id=?";
+                sql += " and nationality_id = ? ";
             }
             
         PreparedStatement stmt = c.prepareStatement(sql);
         
         int i=1;
-            if (name!=null) {
+            if (name!=null && !name.trim().isEmpty()) {
                 stmt.setString(i, name);
                 i++;
             }
-            if (surname!=null) {
+            if (surname!=null && !surname.trim().isEmpty()) {
                 stmt.setString(i, surname);
                 i++;
             }
