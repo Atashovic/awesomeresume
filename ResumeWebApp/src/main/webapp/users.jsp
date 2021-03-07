@@ -13,6 +13,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="assets/css/users.css" >
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>JSP Page</title>
     </head>
     <body>
@@ -32,33 +34,39 @@
 
         %>
 
+        <div class="container mycontainer">
+           <div class="row">
 
-        <div>
-            <form action="users.jsp" method="GET">
+                 <div class="col-4">
+            <form action="users" method="GET">
 <%--                <input type="hidden" name="id" value=""/>--%>
 <%--                <br/>--%>
                 <label>name</label>
-                <input type="text" name="name" value=""/>
+                <input placeholder="Enter name" type="text" class="form-control" name="name" value=""/>
                 <br/>
                 <br/>
                 <label>surname</label>
-                <input type="text" name="surname" value=""/>
+                <input placeholder="Enter surname" type="text" class="form-control" name="surname" value=""/>
                 <br/>
                 <br/>
-                <input type="submit" name="search" value="Search">
+                <input type="submit" class="btn btn-primary" name="search" value="Search">
             </form>  
         </div>
+           </div>
 
-        <br/>
+                 <br/>
+                 <hr/>
 
 
-        <div>
-            <table>
+                <div>
+            <table class="table" >
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Surname</th>
                         <th>Nationality</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,10 +77,27 @@
                         <td><%=u.getName()%></td>
                         <td><%=u.getSurname()%></td>
                         <td><%=u.getNationality().getName()==null?"N/A":u.getNationality().getName()%></td>
+                        <td style="width:5px">
+                            <form action="userdetail" method="POST">
+                                <input type="hidden" name="id" value="<%=u.getId()%>"/>
+                                <input type="hidden" name="action" value="delete"/>
+                                <input type="submit"  value="delete" class="btn-danger" />
+                            </form>
+                        </td>
+                        <td style="width:5px">
+                            <form action="userdetail" method="GET">
+                                <input type="hidden" name="id" value="<%=u.getId()%>"/>
+                                <input type="hidden" name="action" value="update"/>
+                                <input type="submit"  value="update" class="btn-secondary" />
+                            </form>
+                        </td>
                     </tr>
                 <%}%>
                 </tbody>
             </table>
+        </div>
+
+
         </div>
 
     </body>

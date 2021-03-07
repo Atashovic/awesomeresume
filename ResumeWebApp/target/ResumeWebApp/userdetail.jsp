@@ -16,30 +16,17 @@
     </head>
     <body>
         <%
-            UserDaoInter userdao = Context.instanceUserDao();
-
-////            out.println("name = " + u.getName());
-//            if (request.getParameter("save") != null && request.getParameter("save").equals("Save")) {
-//                int id = Integer.valueOf(request.getParameter("id"));
-//                String name = request.getParameter("name");
-//                String surname = request.getParameter("surname");
-//
-//                System.out.println("name" + name);
-//                System.out.println("surname" + surname);
-//
-//                User user = userdao.getById(id);
-//                user.setName(name);
-//                user.setSurname(surname);
-//
-//                userdao.updateUser(user);
+//            if (request.getAttribute("owner")==null)
+//            {
+//                response.sendRedirect("error.jsp?msg=not found");
+//                return;
 //            }
-            User u = userdao.getById(5);
+            User u = (User) request.getAttribute("user");
 
         %>
 
-
         <div>
-            <form action="UserController" method="POST">
+            <form action="userdetail" method="POST">
                 <input type="hidden" name="id" value="<%=u.getId()%>"/>
                 <br/>
                 <label>name</label>
@@ -62,7 +49,8 @@
                 <input type="text" name="email" value="<%=u.getEmail()%>"/>
                 <br/>
                 <input type="submit" name="save" value="Save">
-            </form>  
+            </form>
         </div>
+<%--    <% } %>--%>
     </body>
 </html>
