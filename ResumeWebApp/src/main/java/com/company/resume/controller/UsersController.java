@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -31,7 +32,12 @@ public class UsersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        UserDaoInter userdao = Context.instanceUserDao();
+
+
         request.getRequestDispatcher("users.jsp").forward(request,response);
+
 
     }
 

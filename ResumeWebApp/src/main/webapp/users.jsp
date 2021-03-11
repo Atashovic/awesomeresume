@@ -74,9 +74,9 @@
                     for (User u : list){
                 %>
                     <tr>
-                        <td><%=u.getName()%></td>
-                        <td><%=u.getSurname()%></td>
-                        <td><%=u.getNationality().getName()==null?"N/A":u.getNationality().getName()%></td>
+                        <td style="width:10px"><%=u.getName()%></td>
+                        <td style="width:10px"><%=u.getSurname()%></td>
+                        <td style="width:10px"><%=u.getNationality().getName()==null?"N/A":u.getNationality().getName()%></td>
                         <td style="width:5px">
                             <form action="userdetail" method="POST">
                                 <input type="hidden" name="id" value="<%=u.getId()%>"/>
@@ -87,8 +87,14 @@
                         <td style="width:5px">
                             <form action="userdetail" method="GET">
                                 <input type="hidden" name="id" value="<%=u.getId()%>"/>
-                                <input type="hidden" name="action" value="update"/>
+<%--                                <input type="hidden" name="action" value="update"/>--%>
                                 <input type="submit"  value="update" class="btn-secondary" />
+                            </form>
+                        </td>
+                        <td style="width:5px">
+                            <form action="userinfo" method="GET">
+                                <input type="hidden" name="id" value="<%=u.getId()%>"/>
+                                <input type="submit"  value="information" class="btn-secondary" />
                             </form>
                         </td>
                     </tr>

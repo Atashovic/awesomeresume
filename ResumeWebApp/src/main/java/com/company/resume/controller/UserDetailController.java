@@ -38,12 +38,6 @@ public class UserDetailController extends HttpServlet {
             String phone = request.getParameter("phone");
             String email = request.getParameter("email");
 
-            System.out.println("name" + name);
-            System.out.println("surname" + surname);
-            System.out.println("address" + address);
-            System.out.println("phone" + phone);
-            System.out.println("email" + email);
-
             User user = userdao.getById(id);
             user.setName(name);
             user.setSurname(surname);
